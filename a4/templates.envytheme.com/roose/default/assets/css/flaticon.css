@@ -1,0 +1,40 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 04/03/2021 12:16
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("../fonts/Flaticon.eot");
+  src: url("../fonts/Flaticond41d.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/Flaticon.woff2") format("woff2"),
+       url("../fonts/Flaticon.woff") format("woff"),
+       url("../fonts/Flaticon.ttf") format("truetype"),
+       url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-style: normal;
+}
+
+.flaticon-quote:before { content: "\f100"; }
+.flaticon-roof:before { content: "\f101"; }
+.flaticon-reputation:before { content: "\f102"; }
+.flaticon-user-experience:before { content: "\f103"; }
+.flaticon-quality:before { content: "\f104"; }
+.flaticon-project:before { content: "\f105"; }
+.flaticon-consulting:before { content: "\f106"; }
+.flaticon-address:before { content: "\f107"; }
+.flaticon-broken-roof:before { content: "\f108"; }
+.flaticon-roof-1:before { content: "\f109"; }
