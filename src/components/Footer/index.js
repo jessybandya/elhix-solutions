@@ -79,7 +79,7 @@ function Footer() {
               <li className="location">
                 <i className="ri-map-pin-line" />
                 <span>Address</span>
-                University way, Nairobi Kenya
+                Wisdom House, Off Biason Street, Nairobi Kenya 
               </li>
               <li>
                 <i className="ri-mail-line" />
@@ -89,7 +89,10 @@ function Footer() {
               <li>
                 <i className="ri-phone-line" />
                 <span>Phone</span>
+                <span style={{display:'flex',alignItems:'center'}}>
                 <a href="tel:+254746749307">+254746749307</a>
+                <a style={{marginLeft:6}} href="tel:+254717889264">+254717889264</a>
+                </span>
               </li>
             </ul>
           </div>
@@ -147,8 +150,8 @@ function Footer() {
   <div className="copy-right-area">
     <div className="container">
       <p>
-        Copyright <i className="ri-copyright-line" /> {new Date().getFullYear()} Elhix Solutions. Design &amp; Developed By 
-        <a style={{marginLeft:5}} href="https://laughing-darwin-c668f3.netlify.app/" target="_blank">Jessy Bandya</a>
+        Copyright <i className="ri-copyright-line" /> {new Date().getFullYear()} Roophix Solutions. Design &amp; Developed By 
+        <a style={{marginLeft:5}} href="https://jessy-bandya.web.app/" target="_blank">Jessy Bandya</a>
       </p>
     </div>
   </div>

@@ -16,13 +16,6 @@ function Header() {
 
   return (
     <div>
-        {/* Start Preloader Area */}
-        <div className="preloader">
-        <div className="lds-ripple">
-          <div className="pl-flip-1 pl-flip-2" />
-        </div>
-      </div>
-      {/* End Preloader Area */}
     <header className={pathname === '/' ? "header-area header-area-style-three fixed-top" : "header-area" }>
     {/* Start Top Header */}
     <div className={pathname === '/' ? "top-header top-header-style-three black-bg-color" : "top-header top-header-style-two black-bg-color"}>
@@ -218,17 +211,20 @@ function Header() {
               <li>
                 <i className="ri-map-pin-fill" />
                 <span>Address</span>
-                University way, Nairobi Kenya
+                Wisdom House, Off Biason Street, Nairobi Kenya 
               </li>
               <li>
                 <span>Email</span>
                 <i className="ri-mail-fill" />
-                <a href='mailto: jessy.bandya5@gmail.com'><span>jessy.bandya5@gmail.com</span></a>
+                <a href='mailto:jessy.bandya5@gmail.com'><span>jessy.bandya5@gmail.com</span></a>
               </li>
               <li>
+                <i className="ri-phone-line" />
                 <span>Phone</span>
-                <i className="ri-phone-fill" />
-                <a href="tel:+254746749307">+254 (7)46749307</a>
+                <span style={{display:'flex',alignItems:'center'}}>
+                <a href="tel:+254746749307">+254746749307</a>
+                <a style={{marginLeft:6}} href="tel:+254717889264">+254717889264</a>
+                </span>
               </li>
             </ul>
           </div>

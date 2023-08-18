@@ -1,11 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Typewriter from 'typewriter-effect';
 import Swal from 'sweetalert2';
 import CountUp from 'react-countup';
+import { db } from '../../auth/firebase';
+import Post from '../Services/Post';
 
 function Home() {
+  const [posts, setPosts] = React.useState([])
+  const [currentPage, setCurrentPage] = useState(1);
+  const [prevPage, setPrevPage] = useState(1);
+  const pageSize = 10; // Number of posts per page
+
+   React.useEffect(() => {
+       db.collection('services').limit(3).orderBy("timestamp","desc").onSnapshot(snapshot => {
+           setPosts(snapshot.docs.map(doc => ({
+               id: doc.id,
+               post: doc.data(),
+           })));
+       })
+   }, []);
+
+// Calculate the total number of pages based on the posts array length and page size
+const totalPages = Math.ceil(posts.length / pageSize);
+
+// Handle page change
+const handlePageChange = (event, page) => {
+  setCurrentPage(page);
+};
+
+// Get the posts for the current page
+const getCurrentPosts = () => {
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  return posts.slice(startIndex, endIndex);
+};
+
+useEffect(() => {
+  // Save the current page before updating the data
+  setPrevPage(currentPage);
+}, [posts]);
+
+useEffect(() => {
+  // Set the current page back to its previous value after data update
+  setCurrentPage(prevPage);
+}, [prevPage]);
   return (
     <div>
     <Header />
@@ -19,7 +59,7 @@ function Home() {
             <div className="container">
               <div className="banner-content">
               <span><img src="/media/images/logos/logo-trans.png" style={{height:50}} alt=""/></span>
-                <h1>We provide advanced roofing & Tiling services</h1>
+                <h2 style={{color:'#fff'}}>We Design, Supply and Install Lifeline Systems & Construction Services</h2>
                 <div className="banner-btn">
                   <a onClick={() => Swal.fire({
                     icon:'info',
@@ -36,7 +76,7 @@ function Home() {
       </section>
       {/* End Banner Area */}
       {/* Start About Area */}
-      <section className="about-area about-area-style-three pt-100 pb-70">
+      <section className="about-area about-area-style-three pt-100 pb-70 my-home-class">
         <div className="container">
           <div className="row align-items-center">
           <div className="col-lg-6">
@@ -48,31 +88,27 @@ function Home() {
             <div className="col-lg-6 i-p-l-w-100">
               <div className="about-content">
                 <span>About company</span>
-                <h2>With more than 3 years of experience, the roofing & tiling services company has become the largest roofing company in the country.</h2>
+                <h2>With more than 3 years of experience, We Design, Supply and Install Lifeline Systems & Construction Services</h2>
                 <ul>
                   <li>
                     <i className="ri-check-line" />
-                    With years of experience in the industry, we bring a wealth of expertise to every roofing and tiling project.
+                    Lifeline Specialists: Design, supply, and install lifeline systems.
                   </li>
                   <li>
                     <i className="ri-check-line" />
-                    We take pride in delivering top-notch craftsmanship in every project.
+                    Construction Pros: Expertise in seamless construction services.
                   </li>
                   <li>
                     <i className="ri-check-line" />
-                    From roof installations to repairs and tile replacements, we offer a comprehensive suite of services tailored to meet your specific needs.
+                    Tailored Integration: Lifelines and construction combined for tailored solutions.
                   </li>
                   <li>
                     <i className="ri-check-line" />
-                    We source and use only high-quality roofing materials and tiles, ensuring durability and longevity. 
+                    Trusted Track Record: Proven success in lifelines and construction projects. 
                   </li>
                   <li>
                     <i className="ri-check-line" />
-                    Quality doesn't have to come with an exorbitant price tag.
-                  </li>
-                  <li>
-                    <i className="ri-check-line" />
-                    We are a licensed and insured company, giving you peace of mind knowing that your roofing and tiling project is in capable and reliable hands.
+                    Total Peace of Mind: Holistic services for utmost peace of mind.
                   </li>
                 </ul>
                 <a href="/about-us" className="default-btn">
@@ -94,7 +130,7 @@ function Home() {
                   <div className="count-title">
                     <i className="flaticon-address" />
                     <h2>
-                    <CountUp delay={15} end={120000} />
+                    <CountUp delay={5} end={120000} />
                     </h2>
                     <h4>People in the city</h4>
                   </div>
@@ -105,7 +141,7 @@ function Home() {
                   <div className="count-title">
                     <i className="flaticon-consulting" />
                     <h2>
-                    <CountUp delay={15} end={100} /> 
+                    <CountUp delay={5} end={100} /> 
                     </h2>
                     <h4>Square of city</h4>
                   </div>
@@ -116,7 +152,7 @@ function Home() {
                   <div className="count-title">
                     <i className="flaticon-project" />
                     <h2>
-                    <CountUp delay={15} end={2} />
+                    <CountUp delay={5} end={2} />
                     </h2>
                     <h4>Year of foundation</h4>
                   </div>
@@ -127,7 +163,7 @@ function Home() {
                   <div className="count-title">
                     <i className="flaticon-quality" />
                     <h2>
-                    <CountUp delay={15} end={15} /> 
+                    <CountUp delay={5} end={15} /> 
                     </h2>
                     <h4>Successful programs</h4>
                   </div>
@@ -142,69 +178,33 @@ function Home() {
       <section className="professional-services-area professional-services-area-style-two ptb-100 pb-70">
         <div className="container">
           <div className="section-title">
-            <h2>We offer all kinds of professional modern roofing & tiling services</h2>
+            <h2>We offer all kinds of professional modern Supply and Install Lifeline Systems & Construction Services</h2>
             <p>
-            we specialize in providing exceptional tiles and roofing solutions that redefine durability and style. With a commitment to craftsmanship and excellence, we offer a comprehensive range of services tailored to meet your architectural and functional needs.
+            "Your one-stop destination for comprehensive modern Supply and Install Lifeline Systems & Construction Services, covering a diverse range of professional needs."
             </p>
           </div>
           <div className="row">
-            <div className="col-lg-4 col-md-6">
-              <div className="professional-services white-bg title-color">
-                <a href="#">
-                  <img src="assets/images/services/services-1.jpg" alt="Image" />
-                </a>
-                <div className="professional-services-content">
-                  <h3>
-                    <a href="#">
-                      Flat roofing
-                    </a>
-                  </h3>
-                  <p>Streamlined, modern flat roofing solutions. Expert craftsmanship, durability, and sleek design for contemporary spaces. Elevate your roof with us.</p>
-                  <a href="#" className="read-more">
-                    Discover more
-                    <i className="ri-arrow-right-line" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="professional-services white-bg title-color">
-                <a href="#">
-                  <img src="media/images/image-2.jpg" alt="Image" />
-                </a>
-                <div className="professional-services-content">
-                  <h3>
-                    <a href="#">
-                      Tile flooring
-                    </a>
-                  </h3>
-                  <p>Timeless tile flooring. Beauty and durability in every step. Elevate your space with our stunning tile options for lasting elegance.</p>
-                  <a href="#" className="read-more">
-                    Discover more
-                    <i className="ri-arrow-right-line" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="professional-services white-bg title-color">
-                <a href="#">
-                  <img src="assets/images/services/services-3.jpg" alt="Image" />
-                </a>
-                <div className="professional-services-content">
-                  <h3>
-                    <a href="#">
-                      Metal roofing
-                    </a>
-                  </h3>
-                  <p>Durable metal roofing solutions. Modern, reliable, and weather-resistant. Elevate your property's appeal and safeguard with our sleek metal roofs.</p>
-                  <a href="#" className="read-more">
-                    Discover more
-                    <i className="ri-arrow-right-line" />
-                  </a>
-                </div>
-              </div>
-            </div>
+          {            posts?.length > 0 ? (
+            getCurrentPosts().map(({id, post}) => (
+              <Post
+              key={id} 
+              title={post?.title}
+              description={post?.description}
+              serviceID={id}
+              images={post?.images}
+              timestamp={post?.timestamp}
+              />
+            ))
+          ) : (
+            <div style={{ display: 'table', margin: 'auto', fontSize: 18, fontWeight: 'bold' }}>Loading...</div>
+          )}
+          <center>
+          <a href='/services' >
+          <button type="submit" className="default-btn">
+          Find More
+        </button>
+          </a>  
+          </center>
           </div>
         </div>
       </section>
@@ -246,33 +246,35 @@ function Home() {
               </div>
             </div>
             <div className="col-lg-6">
-              <form className="choose-us-from-bg ml-15">
+              <div className="choose-us-from-bg ml-15">
                 <h2>Request Quote</h2>
                 <div className="form-group">
                   <i className="ri-user-fill" />
-                  <input className="form-control" type="text" placeholder="Name" />
+                  <input style={{backgroundColor:'#343a40'}} className="form-control" type="text" placeholder="Name" />
                 </div>
                 <div className="form-group">
                   <i className="ri-mail-line" />
-                  <input className="form-control" type="email" placeholder="Email" />
+                  <input style={{backgroundColor:'#343a40'}} className="form-control" type="email" placeholder="Email" />
                 </div>
                 <div className="form-group">
                   <i className="ri-map-pin-2-fill" />
-                  <input className="form-control" type="text" placeholder="Address" />
+                  <input style={{backgroundColor:'#343a40'}} className="form-control" type="text" placeholder="Address" />
                 </div>
                 <div className="form-group date" id="datetimepicker">
-                  <input type="text" className="form-control" id="Date" placeholder="Inspection date" />
+                  <input style={{backgroundColor:'#343a40'}} type="text" className="form-control" id="Date" placeholder="Inspection date" />
                   <span className="input-group-addon" />
                   <i className="ri-calendar-line" />
                 </div>
                 <div className="form-group">
                   <i className="ri-time-line" />
-                  <input className="form-control" type="text" placeholder="Comfortable time" />
+                  <input style={{backgroundColor:'#343a40'}} className="form-control" type="text" placeholder="Comfortable time" />
                 </div>
+                <a href="/contact-us">
                 <button type="submit" className="default-btn">
-                  Get free quote
-                </button>
-              </form>
+                Get free quote
+              </button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -295,89 +297,6 @@ function Home() {
         </div>
       </section>
       {/* End Calling Area */}
-      {/* Start Team Area */}
-      <section className="team-area team-area-three pt-100 pb-70">
-        <div className="container">
-          <div className="section-title">
-            <h2>Meet our exclusive team members</h2>
-          </div>
-          <div className="row justify-content-md-center">
-            <div className="col-lg-3 col-md-6">
-              <div className="single-team-member">
-                <img src="/media/images/odero.jpg" alt="Image" />
-                <div className="team-content">
-                  <h3>Odero Phelix</h3>
-                  <span>Founder & CEO</span>
-                  <div className="team-social">
-                    <span className="control">
-                      <i className="ri-share-fill" />
-                    </span>
-                    <ul>
-                      <li>
-                        <a href="https://www.facebook.com/" target="_blank">
-                          <i className="ri-facebook-fill" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/" target="_blank">
-                          <i className="ri-instagram-line" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.linkedin.com/" target="_blank">
-                          <i className="ri-linkedin-fill" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://twitter.com/" target="_blank">
-                          <i className="ri-twitter-fill" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6">
-              <div className="single-team-member">
-                <img src="/media/images/jessy.png" alt="Image" />
-                <div className="team-content">
-                  <h3>Jessy Bandya</h3>
-                  <span>Software Developer</span>
-                  <div className="team-social">
-                    <span className="control">
-                      <i className="ri-share-fill" />
-                    </span>
-                    <ul>
-                      <li>
-                        <a href="https://www.facebook.com/" target="_blank">
-                          <i className="ri-facebook-fill" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/" target="_blank">
-                          <i className="ri-instagram-line" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.linkedin.com/" target="_blank">
-                          <i className="ri-linkedin-fill" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://twitter.com/" target="_blank">
-                          <i className="ri-twitter-fill" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* End Team Area */}
       {/* Start Footer Area */}
 
       <Footer />

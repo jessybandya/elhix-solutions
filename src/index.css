@@ -14,3 +14,22 @@ code {
 .mobile-menu-visible {
   display: block;
 }
+
+  /* bigger screen */
+  @media (min-width: 600px){
+    .my-home-class{
+     margin-top: -90px;
+    }
+    .about-img{
+      margin-top: -100px;
+    }
+  }
+
+    /* bigger screen */
+    @media (max-width: 600px){
+      .Header-Navabar{
+        margin-right: -90px;
+      }
+    }
+
+  

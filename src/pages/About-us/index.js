@@ -37,32 +37,39 @@ function AboutUs() {
             <div className="col-lg-6 i-p-l-w-100">
               <div className="about-content">
                 <span>About company</span>
-                <h2>With more than 3 years of experience, the roofing & tiling services company has become the largest roofing company in the country.</h2>
+                <h2>With more than 3 years of experience, We Design, Supply and Install Lifeline Systems & Construction Services</h2>
+
                 <ul>
                   <li>
                     <i className="ri-check-line" />
-                    With years of experience in the industry, we bring a wealth of expertise to every roofing and tiling project.
+                    <b>Lifeline Specialists: Design, supply, and install lifeline systems.</b>
+                    Our team of dedicated lifeline specialists is at the forefront of creating, delivering, and implementing lifeline systems that prioritize safety and security. From meticulously designing lifeline solutions to sourcing top-quality materials, and ensuring precise installation, we are your partners in safeguarding lives and environments.
+                    </li>
+                  <li>
+                    <i className="ri-check-line" />
+                    <b>Construction Pros: Expertise in seamless construction services.</b>
+
+With a wealth of experience in the construction industry, our team of seasoned professionals brings unparalleled expertise to every project. We handle construction services seamlessly, ensuring efficient planning, execution, and completion. From groundbreaking to finishing touches, we ensure the highest standards of craftsmanship.
                   </li>
                   <li>
                     <i className="ri-check-line" />
-                    We take pride in delivering top-notch craftsmanship in every project.
-                  </li>
-                  <li>
-                    <i className="ri-check-line" />
-                    From roof installations to repairs and tile replacements, we offer a comprehensive suite of services tailored to meet your specific needs.
-                  </li>
+                    <b>Tailored Integration: Lifelines and construction combined for tailored solutions.</b>
+
+                    Our unique approach integrates the realms of lifeline systems and construction, resulting in tailor-made solutions that perfectly match your requirements. We understand that each project is unique, and our ability to harmoniously integrate lifelines with construction ensures a unified and efficient outcome that addresses your specific needs.                  </li>
                   <li>
                     <i className="ri-check-line" />
                     We source and use only high-quality roofing materials and tiles, ensuring durability and longevity. 
                   </li>
                   <li>
                     <i className="ri-check-line" />
-                    Quality doesn't have to come with an exorbitant price tag.
-                  </li>
+                    <b>Trusted Track Record: Proven success in lifelines and construction projects.</b>
+
+                    Our track record speaks volumes about our commitment to excellence. We've successfully executed numerous lifeline and construction projects, earning the trust of our clients. Our history of delivering on promises, meeting deadlines, and exceeding expectations sets us apart as a trusted partner in your ventures.                  </li>
                   <li>
                     <i className="ri-check-line" />
-                    We are a licensed and insured company, giving you peace of mind knowing that your roofing and tiling project is in capable and reliable hands.
-                  </li>
+                    <b>Total Peace of Mind: Holistic services for utmost peace of mind.</b> 
+
+                    We provide more than just services – we offer a complete peace-of-mind package. By combining lifeline systems and construction services, we ensure that every aspect of your project is handled seamlessly and comprehensively. Rest easy knowing that your project is in the hands of experienced professionals who prioritize safety, quality, and your peace of mind.                  </li>
                 </ul>
               </div>
             </div>

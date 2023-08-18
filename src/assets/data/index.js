@@ -10,11 +10,6 @@ const Navlinks = [
         icon:'',
     },
     {
-        name:'Our Team',
-        href:'/team',
-        icon:'',
-    },
-    {
         name:'Services',
         href:'/services',
         icon:'',
